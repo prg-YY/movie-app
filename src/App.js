@@ -11,7 +11,7 @@ function App() {
   const [movies, setMovies] = useState([])
   const [searchValue, setSearchValue] = useState("")
 
-  const getMovieRequests = async () => {
+  const getMovieRequests = async (searchValue) => {
     const url = `http://www.omdbapi.com/?s=${searchValue}&apikey=ed238a5d`
     const response = await fetch(url)
 
@@ -26,9 +26,9 @@ function App() {
     getMovieRequests(searchValue)
   }, [searchValue])
   return (
-    <div className="container-fluid row">
+    <div className="container-fluid movie-app">
       <div className="row d-flex align-items-center mt-4 mb-4">
-        <MovieListHeading heading="movies" />
+        <MovieListHeading heading="Movies" />
         <SearchBox searchValue={searchValue} setSearchValue={setSearchValue} />
       </div>
       <div className="row">
